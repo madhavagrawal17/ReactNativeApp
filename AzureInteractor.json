@@ -1,0 +1,152 @@
+{
+  "id": "2418599D-7751-442C-8111-9916B7CB3662",
+  "version": "0.1.0",
+  "manifestVersion": "1.7",
+  "developerName": "Microsoft Corp.",
+  "developerUrl": "https://dev.office.com",
+  "privacyUrl": "https://go.microsoft.com/fwlink/p/?linkid=857875",
+  "termsOfUseUrl": "https://aka.ms/sample-teams-tos",
+  "smallImageUrl": "http://localhost:7010/images/button32x32.png",
+  "largeImageUrl": "http://localhost:7010/images/button80x80.png",
+  "shortDescription": "AzureInteractor",
+  "longDescription": "AzureInteractor",
+  "accentColor": "#093c7f",
+  "name": "AzureInteractor",
+  "permissions": ["Document.ReadWrite", "Mailbox.ReadWrite", "Mailbox.SharedFolder"],
+  "webApplicationInfo": {
+    "applicationId": "5a4fc14b-a1ff-468a-8500-6f02fc9ad170",
+    "resource": "api://codexeonapps.com/5a4fc14b-a1ff-468a-8500-6f02fc9ad170"
+  },
+  "extension": {
+    "requirements": {
+      "scopes": [
+        "mail",
+        "document",
+        "workbook",
+        "presentation"
+      ]
+    },
+    "runtimes": [
+      {
+        "id": "taskpane",
+        "type": "general",
+        "code": {
+          "page": "http://localhost:8080/index.html",
+          "script": "http://localhost:8080/index.js"
+        },
+        "lifetime": "long",
+        "actions": {
+          "items": [
+            {
+              "id": "taskpane.showTaskpane",
+              "type": "contextual-launch",
+              "view": "home"
+            },
+            {
+              "id": "taskpane.updateSharedValue",
+              "type": "execution",
+              "name": "appCmdUpdateSharedAppData"
+            }
+          ]
+        }
+      }
+    ],
+    "ribbons": [
+      {
+        "contexts": [
+          "default"
+        ],
+        "tabs": [
+          {
+            "nativeId": "TabHome",
+            "groups": [
+              {
+                "id": "richApiGroup",
+                "label": "AzureInteractor",
+                "icons": [
+                  {
+                    "size": 16,
+                    "file": "http://localhost:7010/images/button16x16.png"
+                  },
+                  {
+                    "size": 32,
+                    "file": "http://localhost:7010/images/button32x32.png"
+                  },
+                  {
+                    "size": 80,
+                    "file": "http://localhost:7010/images/button64x64.png"
+                  }
+                ],
+                "controls": [
+                  {
+                    "id": "showTaskpane",
+                    "type": "button",
+                    "label": "Taskpane",
+                    "enabled": true,
+                    "icons": [
+                      {
+                        "size": 16,
+                        "file": "http://localhost:7010/images/button16x16.png"
+                      },
+                      {
+                        "size": 32,
+                        "file": "http://localhost:7010/images/button32x32.png"
+                      },
+                      {
+                        "size": 80,
+                        "file": "http://localhost:7010/images/button64x64.png"
+                      }
+                    ],
+                    "supertip": {
+                      "title": "Show Taskpane",
+                      "description": "Click to show the RichAPI taskpane"
+                    },
+                    "actionId": "taskpane.showTaskpane"
+                  },
+                  {
+                    "id": "updateSharedValue",
+                    "type": "button",
+                    "label": "Update Shared Value",
+                    "icons": [
+                      {
+                        "size": 16,
+                        "file": "http://localhost:7010/images/button16x16.png"
+                      },
+                      {
+                        "size": 32,
+                        "file": "http://localhost:7010/images/button32x32.png"
+                      },
+                      {
+                        "size": 80,
+                        "file": "http://localhost:7010/images/button80x80.png"
+                      }
+                    ],
+                    "supertip": {
+                      "title": "Update Shared Value",
+                      "description": "Update Shared Value"
+                    },
+                    "actionId": "taskpane.updateSharedValue"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keyboards": [
+      {
+        "shortcuts": [
+          {
+            "key": "Ctrl+Shift+U",
+            "actionId": "taskpane.updateSharedValue"
+          },
+          {
+            "key": "Ctrl+Shift+O",
+            "actionId": "taskpane.showTaskpane"
+          }
+        ]
+      }
+    ]
+  }
+}
